@@ -15,9 +15,6 @@ public class TodoerDTO {
     private UUID id;
 
     @NotNull
-    private Integer index;
-
-    @NotNull
     @NotBlank
     @Size(max = 100)
     private String todo;
