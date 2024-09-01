@@ -23,19 +23,16 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Todoer {
     @Id
-    @GeneratedValue(generator="UUID")
+    @GeneratedValue(generator = "UUID")
     @UuidGenerator
     @JdbcTypeCode(SqlTypes.CHAR)
-    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false,nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
-
-    @NotNull
-    private Integer index;
 
     @NotNull
     @NotBlank
     @Column(length = 100)
-    @Size(max=100)
+    @Size(max = 100)
     private String todo;
 
     private LocalDateTime createdDate;
