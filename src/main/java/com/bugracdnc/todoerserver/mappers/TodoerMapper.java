@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface TodoerMapper {
-    Todoer objToDTO(TodoerDTO dto);
+    Todoer dtoToObj(TodoerDTO dto);
 
-    TodoerDTO dtoToOBJ(Todoer obj);
+    TodoerDTO objToDto(Todoer obj);
 }
