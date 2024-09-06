@@ -33,8 +33,6 @@ public class TodoerServiceJPA implements TodoerService {
         AtomicReference<Optional<TodoerDTO>> atomicReference = new AtomicReference<>();
         todoerRepo.findById(todoId).ifPresentOrElse(todoer -> {
             todoer.setTodo(dto.getTodo());
-            todoer.setCreatedDate(dto.getCreatedDate());
-            todoer.setUpdateDate(LocalDateTime.now());
             atomicReference.set((Optional.of(todoerMapper.objToDto(todoerRepo.save(todoer)))));
         }, () -> {
             atomicReference.set(Optional.empty());
@@ -46,9 +44,6 @@ public class TodoerServiceJPA implements TodoerService {
     @Override
     public TodoerDTO save(TodoerDTO dto) {
         Todoer todoer = todoerMapper.dtoToObj(dto);
-        todoer.setId(UUID.randomUUID());
-        todoer.setCreatedDate(LocalDateTime.now());
-        todoer.setUpdateDate(LocalDateTime.now());
         return todoerMapper.objToDto(todoerRepo.save(todoer));
     }
 
