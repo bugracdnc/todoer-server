@@ -8,7 +8,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.type.SqlTypes;
 
@@ -35,6 +37,9 @@ public class Todoer {
     @Size(max = 100)
     private String todo;
 
+    @CreationTimestamp
     private LocalDateTime createdDate;
+
+    @UpdateTimestamp
     private LocalDateTime updateDate;
 }
