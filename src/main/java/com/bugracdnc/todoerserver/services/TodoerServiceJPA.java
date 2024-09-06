@@ -33,9 +33,7 @@ public class TodoerServiceJPA implements TodoerService {
         todoerRepo.findById(todoId).ifPresentOrElse(todoer -> {
             todoer.setTodo(dto.getTodo());
             atomicReference.set((Optional.of(todoerMapper.objToDto(todoerRepo.save(todoer)))));
-        }, () -> {
-            atomicReference.set(Optional.empty());
-        });
+        }, () -> atomicReference.set(Optional.empty()));
 
         return atomicReference.get();
     }

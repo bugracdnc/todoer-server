@@ -68,6 +68,7 @@ class TodoerControllerTest {
         ResponseEntity<HttpStatus> res = todoerController.updateById(todo.getId(), dto);
 
         assert res.getStatusCode() == HttpStatusCode.valueOf(204);
+        assert todoerRepo.findById(todo.getId()).isPresent();
         assert Objects.equals(todoerRepo.findById(todo.getId()).get().getTodo(), dto.getTodo());
     }
 
